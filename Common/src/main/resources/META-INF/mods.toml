@@ -1,14 +1,14 @@
 modLoader="javafml"
 loaderVersion="*"
 license="All rights reserved"
-issueTrackerURL="https://github.com/ricksouth/serilum-mc-mods/labels/Mod:%20GUI%20Followers"
+issueTrackerURL="https://github.com/Serilum/.issue-tracker/labels/Mod:%20GUI%20Followers"
 logoFile="icon.png"
 
 [[mods]]
 modId="guifollowers"
-version="3.3"
+version="3.4"
 displayName="GUI Followers"
-displayURL="https://curseforge.com/minecraft/mc-mods/gui-followers"
+displayURL="https://serilum.com/mod/gui-followers"
 authors="Rick South"
 description='''[Client] Shows a list in the GUI/HUD with all tamed non-sitting followers around the player.
 '''
@@ -21,13 +21,15 @@ If you would like to contribute too, check out https://ricksouth.com/donate. App
 
 [[dependencies.guifollowers]]
     modId="collective"
+    type="required"
     mandatory=true
-    versionRange="[7.3,)"
+    versionRange="[7.21,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.guifollowers]]
     modId="minecraft"
+    type="required"
     mandatory=true
     versionRange="[1.19.2]"
     ordering="NONE"
