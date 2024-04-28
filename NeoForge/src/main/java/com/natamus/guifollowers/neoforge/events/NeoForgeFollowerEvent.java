@@ -5,8 +5,7 @@ import com.natamus.guifollowers.events.FollowerEvent;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.client.event.InputEvent;
-import net.neoforged.neoforge.event.TickEvent.ClientTickEvent;
-import net.neoforged.neoforge.event.TickEvent.Phase;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedOutEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -14,10 +13,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 @EventBusSubscriber(value = Dist.CLIENT)
 public class NeoForgeFollowerEvent {
 	@SubscribeEvent
-	public static void onPlayerTick(ClientTickEvent e) {
-		if (!e.phase.equals(Phase.START)) {
-			return;
-		}
+	public static void onPlayerTick(ClientTickEvent.Pre e) {
 
 		FollowerEvent.onPlayerTick(Variables.mc);
 	}
