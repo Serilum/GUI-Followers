@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "guifollowers",
-  "version": "3.6",
+  "version": "3.7",
 
   "name": "GUI Followers",
   "description": "[Client] Shows a list in the GUI/HUD with all tamed non-sitting followers around the player.",
@@ -23,7 +23,7 @@
     "fabric": "*",
     "minecraft": ">=1.20",
     "java": ">=21",
-    "collective": ">=7.55"
+    "collective": ">=7.56"
   },
 
   "custom": {
