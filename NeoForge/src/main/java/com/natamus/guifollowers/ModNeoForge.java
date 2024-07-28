@@ -2,6 +2,7 @@ package com.natamus.guifollowers;
 
 
 import com.natamus.collective.check.RegisterMod;
+import com.natamus.collective.check.ShouldLoadCheck;
 import com.natamus.guifollowers.neoforge.config.IntegrateNeoForgeConfig;
 import com.natamus.guifollowers.neoforge.events.NeoForgeFollowerEvent;
 import com.natamus.guifollowers.neoforge.events.NeoForgeKeyMappingRegister;
@@ -18,6 +19,10 @@ import net.neoforged.neoforge.common.NeoForge;
 public class ModNeoForge {
 	
 	public ModNeoForge(IEventBus modEventBus) {
+		if (!ShouldLoadCheck.shouldLoad(Reference.MOD_ID)) {
+			return;
+		}
+
 		if (!FMLEnvironment.dist.equals(Dist.CLIENT)) {
 			return;
 		}

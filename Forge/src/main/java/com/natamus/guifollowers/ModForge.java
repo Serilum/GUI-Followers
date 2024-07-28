@@ -1,6 +1,7 @@
 package com.natamus.guifollowers;
 
 import com.natamus.collective.check.RegisterMod;
+import com.natamus.collective.check.ShouldLoadCheck;
 import com.natamus.guifollowers.forge.config.IntegrateForgeConfig;
 import com.natamus.guifollowers.forge.events.ForgeFollowerEvent;
 import com.natamus.guifollowers.forge.events.ForgeKeyMappingRegister;
@@ -18,6 +19,10 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 public class ModForge {
 	
 	public ModForge() {
+		if (!ShouldLoadCheck.shouldLoad(Reference.MOD_ID)) {
+			return;
+		}
+
 		if (!FMLEnvironment.dist.equals(Dist.CLIENT)) {
 			return;
 		}
