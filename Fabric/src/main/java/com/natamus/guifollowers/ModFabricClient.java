@@ -5,6 +5,8 @@ import com.natamus.collective.fabric.callbacks.CollectivePlayerEvents;
 import com.natamus.guifollowers.data.Variables;
 import com.natamus.guifollowers.events.FollowerEvent;
 import net.fabricmc.api.ClientModInitializer;
+import com.natamus.guifollowers.util.Reference;
+import com.natamus.collective.check.ShouldLoadCheck;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.KeyMapping;
@@ -15,6 +17,10 @@ import net.minecraft.world.level.Level;
 public class ModFabricClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() { 
+		if (!ShouldLoadCheck.shouldLoad(Reference.MOD_ID)) {
+			return;
+		}
+
 		registerEvents();
 	}
 	
