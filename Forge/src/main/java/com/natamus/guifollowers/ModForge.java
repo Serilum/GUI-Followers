@@ -9,7 +9,6 @@ import com.natamus.guifollowers.util.Reference;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -30,7 +29,7 @@ public class ModForge {
 		IEventBus modEventBus = modLoadingContext.getModEventBus();
 
 		modEventBus.addListener(this::loadComplete);
-		modEventBus.register(new ForgeKeyMappingRegister());
+		modEventBus.register(ForgeKeyMappingRegister.class);
 
 		setGlobalConstants();
 		ModCommon.init();
@@ -41,7 +40,7 @@ public class ModForge {
 	}
 
 	private void loadComplete(final FMLLoadCompleteEvent event) {
-    	MinecraftForge.EVENT_BUS.register(new ForgeFollowerEvent());
+    	MinecraftForge.EVENT_BUS.register(ForgeFollowerEvent.class);
 	}
 
 	private static void setGlobalConstants() {

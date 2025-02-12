@@ -8,9 +8,7 @@ import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedOutEvent;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 
-@EventBusSubscriber(value = Dist.CLIENT)
 public class NeoForgeFollowerEvent {
 	@SubscribeEvent
 	public static void onPlayerTick(ClientTickEvent.Pre e) {
