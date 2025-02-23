@@ -2,6 +2,7 @@ package com.natamus.guifollowers.events;
 
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.natamus.collective.functions.GUIFunctions;
 import com.natamus.collective.functions.WorldFunctions;
 import com.natamus.guifollowers.config.ConfigHandler;
 import com.natamus.guifollowers.data.Variables;
@@ -23,7 +24,7 @@ public class GUIEvent {
 	private static final Minecraft mc = Minecraft.getInstance();
 
 	public static void renderOverlay(GuiGraphics guiGraphics, float tickDelta) {
-		if (mc.options.renderDebug) {
+		if (GUIFunctions.shouldHideGUI()) {
 			return;
 		}
 
