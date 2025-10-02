@@ -5,7 +5,6 @@ import com.natamus.collective.check.ShouldLoadCheck;
 import com.natamus.guifollowers.forge.config.IntegrateForgeConfig;
 import com.natamus.guifollowers.forge.events.ForgeFollowerEvent;
 import com.natamus.guifollowers.forge.events.ForgeGUIEvent;
-import com.natamus.guifollowers.forge.events.ForgeKeyMappingRegister;
 import com.natamus.guifollowers.util.Reference;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,7 +30,7 @@ public class ModForge {
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		modEventBus.addListener(this::loadComplete);
-		modEventBus.register(ForgeKeyMappingRegister.class);
+		ModCommon.registerHotkeys();
 
 		setGlobalConstants();
 		ModCommon.init();
