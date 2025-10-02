@@ -3,6 +3,7 @@ package com.natamus.guifollowers;
 import com.natamus.collective.globalcallbacks.CollectiveGuiCallback;
 import com.natamus.collective.services.Services;
 import com.natamus.guifollowers.config.ConfigHandler;
+import com.natamus.guifollowers.data.Variables;
 import com.natamus.guifollowers.events.GUIEvent;
 
 public class ModCommon {
@@ -18,5 +19,9 @@ public class ModCommon {
 				GUIEvent.renderOverlay(guiGraphics, deltaTracker);
 			}));
 		}
+	}
+
+	public static void registerHotkeys() {
+		Variables.clearlist_hotkey = Services.REGISTERKEYMAPPING.registerKeyMapping("guifollowers.key.clearlist", 92, "key.categories.misc");
 	}
 }

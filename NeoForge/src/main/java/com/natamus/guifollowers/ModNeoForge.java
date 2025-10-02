@@ -5,7 +5,6 @@ import com.natamus.collective.check.RegisterMod;
 import com.natamus.collective.check.ShouldLoadCheck;
 import com.natamus.guifollowers.neoforge.config.IntegrateNeoForgeConfig;
 import com.natamus.guifollowers.neoforge.events.NeoForgeFollowerEvent;
-import com.natamus.guifollowers.neoforge.events.NeoForgeKeyMappingRegister;
 import com.natamus.guifollowers.util.Reference;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -29,7 +28,7 @@ public class ModNeoForge {
 
 
 		modEventBus.addListener(this::loadComplete);
-		modEventBus.register(NeoForgeKeyMappingRegister.class);
+		ModCommon.registerHotkeys();
 
 		setGlobalConstants();
 		ModCommon.init();
