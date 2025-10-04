@@ -6,7 +6,7 @@ logoFile="icon.png"
 
 [[mods]]
 modId="guifollowers"
-version="4.1"
+version="4.2"
 displayName="GUI Followers"
 displayURL="https://serilum.com/mod/gui-followers"
 authors="Rick South"
@@ -22,7 +22,7 @@ If you would like to contribute too, check out https://serilum.com/donate. Appre
 [[dependencies.guifollowers]]
     modId="collective"
     mandatory=true
-    versionRange="[8.5,)"
+    versionRange="[8.8,)"
     ordering="NONE"
     side="BOTH"
 
