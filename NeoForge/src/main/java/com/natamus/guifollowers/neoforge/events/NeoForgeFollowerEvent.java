@@ -3,7 +3,6 @@ package com.natamus.guifollowers.neoforge.events;
 import com.natamus.guifollowers.data.Variables;
 import com.natamus.guifollowers.events.FollowerEvent;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedOutEvent;
