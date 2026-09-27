@@ -38,7 +38,7 @@ public class ModForge {
 	}
 
 	private void loadComplete(final FMLLoadCompleteEvent event) {
-    	ForgeFollowerEvent.registerEventsInBus();
+		ForgeFollowerEvent.registerEventsInBus();
 	}
 
 	private static void setGlobalConstants() {
