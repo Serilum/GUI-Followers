@@ -3,7 +3,6 @@ package com.natamus.guifollowers.forge.events;
 import com.natamus.guifollowers.data.Variables;
 import com.natamus.guifollowers.events.FollowerEvent;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.TickEvent.ClientTickEvent;
 import net.minecraftforge.event.TickEvent.Phase;
