@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "id": "guifollowers",
-  "version": "4.4",
+  "version": "4.5",
 
   "name": "GUI Followers",
   "description": "[Client] Shows a list in the GUI/HUD with all tamed non-sitting followers around the player.",
-  "authors": [ "Rick South" ],
+  "authors": [ "Serilum" ],
   "contact": {
     "homepage": "https://serilum.com/mod/gui-followers",
     "sources": "https://github.com/Serilum/GUI-Followers",
@@ -16,7 +16,7 @@
   "icon": "icon.png",
 
   "environment": "*",
-  "entrypoints": { "main": [ "com.natamus.guifollowers.ModFabric" ], "client": [ "com.natamus.guifollowers.ModFabricClient" ], "modmenu": [ "com.natamus.guifollowers.fabric.config.IntegrateModMenu" ] },
+  "entrypoints": { "main": [ "com.serilum.guifollowers.ModFabric" ], "client": [ "com.serilum.guifollowers.ModFabricClient" ], "modmenu": [ "com.serilum.guifollowers.fabric.config.IntegrateModMenu" ] },
 
   "depends": {
     "fabricloader": ">=0.18.0",
@@ -38,7 +38,7 @@
 	  " ",
 	  "Thank you very much to my Membership sponsors for supporting the development of this mod!",
 	  " ",
-	  "If you would like to contribute too, check out https://serilum.com/donate.",
+	  "If you would like to contribute too, check out https://serilum.com/donate",
 	  " ",
 	  "Membership sponsors:",
 	  " Andrean Olgo",
