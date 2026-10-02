@@ -1,11 +1,11 @@
-package com.natamus.guifollowers;
+package com.serilum.guifollowers;
 
 import com.natamus.collective.check.RegisterMod;
 import com.natamus.collective.check.ShouldLoadCheck;
-import com.natamus.guifollowers.forge.config.IntegrateForgeConfig;
-import com.natamus.guifollowers.forge.events.ForgeFollowerEvent;
-import com.natamus.guifollowers.forge.events.ForgeGUIEvent;
-import com.natamus.guifollowers.util.Reference;
+import com.serilum.guifollowers.forge.config.IntegrateForgeConfig;
+import com.serilum.guifollowers.forge.events.ForgeFollowerEvent;
+import com.serilum.guifollowers.forge.events.ForgeGUIEvent;
+import com.serilum.guifollowers.util.Reference;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;

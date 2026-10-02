@@ -1,8 +1,8 @@
-package com.natamus.guifollowers;
+package com.serilum.guifollowers;
 
 import com.natamus.collective.services.Services;
-import com.natamus.guifollowers.config.ConfigHandler;
-import com.natamus.guifollowers.data.Variables;
+import com.serilum.guifollowers.config.ConfigHandler;
+import com.serilum.guifollowers.data.Variables;
 import com.mojang.blaze3d.platform.InputConstants;
 
 public class ModCommon {

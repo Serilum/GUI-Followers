@@ -1,4 +1,4 @@
-package com.natamus.guifollowers.data;
+package com.serilum.guifollowers.data;
 
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;

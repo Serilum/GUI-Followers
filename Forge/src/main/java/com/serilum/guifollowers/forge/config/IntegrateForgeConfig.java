@@ -1,7 +1,7 @@
-package com.natamus.guifollowers.forge.config;
+package com.serilum.guifollowers.forge.config;
 
 import com.natamus.collective.config.DuskConfig;
-import com.natamus.guifollowers.util.Reference;
+import com.serilum.guifollowers.util.Reference;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModLoadingContext;
 

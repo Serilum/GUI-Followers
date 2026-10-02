@@ -1,6 +1,6 @@
-package com.natamus.guifollowers.forge.events;
+package com.serilum.guifollowers.forge.events;
 
-import com.natamus.guifollowers.events.GUIEvent;
+import com.serilum.guifollowers.events.GUIEvent;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

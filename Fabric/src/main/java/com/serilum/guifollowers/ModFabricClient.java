@@ -1,11 +1,11 @@
-package com.natamus.guifollowers;
+package com.serilum.guifollowers;
 
 import com.natamus.collective.check.ShouldLoadCheck;
 import com.natamus.collective.fabric.callbacks.CollectivePlayerEvents;
-import com.natamus.guifollowers.data.Variables;
-import com.natamus.guifollowers.events.FollowerEvent;
-import com.natamus.guifollowers.events.GUIEvent;
-import com.natamus.guifollowers.util.Reference;
+import com.serilum.guifollowers.data.Variables;
+import com.serilum.guifollowers.events.FollowerEvent;
+import com.serilum.guifollowers.events.GUIEvent;
+import com.serilum.guifollowers.util.Reference;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;

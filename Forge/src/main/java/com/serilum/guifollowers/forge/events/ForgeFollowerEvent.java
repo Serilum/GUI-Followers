@@ -1,7 +1,7 @@
-package com.natamus.guifollowers.forge.events;
+package com.serilum.guifollowers.forge.events;
 
-import com.natamus.guifollowers.data.Variables;
-import com.natamus.guifollowers.events.FollowerEvent;
+import com.serilum.guifollowers.data.Variables;
+import com.serilum.guifollowers.events.FollowerEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.TickEvent.ClientTickEvent;

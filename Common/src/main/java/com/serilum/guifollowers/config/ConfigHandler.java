@@ -1,7 +1,7 @@
-package com.natamus.guifollowers.config;
+package com.serilum.guifollowers.config;
 
 import com.natamus.collective.config.DuskConfig;
-import com.natamus.guifollowers.util.Reference;
+import com.serilum.guifollowers.util.Reference;
 
 import java.util.Arrays;
 import java.util.HashMap;

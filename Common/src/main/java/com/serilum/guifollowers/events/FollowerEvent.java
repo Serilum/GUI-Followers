@@ -1,10 +1,10 @@
-package com.natamus.guifollowers.events;
+package com.serilum.guifollowers.events;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.natamus.guifollowers.config.ConfigHandler;
-import com.natamus.guifollowers.data.Variables;
+import com.serilum.guifollowers.config.ConfigHandler;
+import com.serilum.guifollowers.data.Variables;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;

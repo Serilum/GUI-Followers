@@ -1,8 +1,8 @@
-package com.natamus.guifollowers;
+package com.serilum.guifollowers;
 
 import com.natamus.collective.check.RegisterMod;
 import com.natamus.collective.check.ShouldLoadCheck;
-import com.natamus.guifollowers.util.Reference;
+import com.serilum.guifollowers.util.Reference;
 import net.fabricmc.api.ModInitializer;
 
 public class ModFabric implements ModInitializer {
