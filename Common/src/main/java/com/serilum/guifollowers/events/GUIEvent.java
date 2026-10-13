@@ -3,9 +3,9 @@ package com.serilum.guifollowers.events;
 import com.mojang.blaze3d.platform.Window;
 import org.joml.Matrix3x2fStack;
 import com.natamus.collective.functions.GUIFunctions;
-import com.natamus.collective.functions.WorldFunctions;
 import com.serilum.guifollowers.config.ConfigHandler;
 import com.serilum.guifollowers.data.Variables;
+import com.serilum.guifollowers.util.Util;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -15,6 +15,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import java.awt.*;
@@ -29,22 +30,30 @@ public class GUIEvent {
 			return;
 		}
 
+		if (!ConfigHandler.showFollowerList) {
+			return;
+		}
+
 		Font font = mc.font;
 		Window scaled = mc.getWindow();
+		float textScale = (float)ConfigHandler.followerListTextScale;
+
 		Matrix3x2fStack matrixStack = guiGraphics.pose();
 		matrixStack.pushMatrix();
-		
+		matrixStack.scale(textScale, textScale);
+
 		if (Variables.activefollowers.size() > 0) {
-			int width = scaled.getGuiScaledWidth();
-			
+			int width = (int)(scaled.getGuiScaledWidth() / textScale);
+
 			String displaystring = ConfigHandler.followerListHeaderFormat;
-			
+
 			int stringWidth = font.width(displaystring);
-			
+
 			Color colour = new Color(ConfigHandler.RGB_R, ConfigHandler.RGB_G, ConfigHandler.RGB_B, 255);
-			
+
 			int xcoord;
 			int xoffset = 5;
+			int widthoffset = (int)(ConfigHandler.followerListWidthOffset / textScale);
 			if (ConfigHandler.followerListPositionIsLeft) {
 				xcoord = 5;
 			}
@@ -54,17 +63,16 @@ public class GUIEvent {
 			else {
 				xcoord = width - stringWidth - 5;
 			}
-			
+
 			boolean drawnfirst = false;
-			int heightoffset = ConfigHandler.followerListHeightOffset;
-			
+			int heightoffset = (int)(ConfigHandler.followerListHeightOffset / textScale);
+
 			LocalPlayer player = mc.player;
-			String playerdimension = WorldFunctions.getWorldDimensionName(player.level());
-			
+			Level playerLevel = player.level();
+
 			List<Entity> toremove = new ArrayList<Entity>();
 			for (Entity follower : new ArrayList<Entity>(Variables.activefollowers)) {
-				String followerdimension = WorldFunctions.getWorldDimensionName(follower.level());
-				if (!playerdimension.equals(followerdimension)) {
+				if (follower.level() != playerLevel) {
 					toremove.add(follower);
 					continue;
 				}
@@ -80,13 +88,19 @@ public class GUIEvent {
 					continue;
 				}
 
+				if (Util.isHidden(te) || Util.isIgnoredEntityType(te)) {
+					toremove.add(follower);
+					continue;
+				}
+
+				LivingEntity le = (LivingEntity) follower;
+				float currenthealth = le.getHealth();
+				float maxhealth = le.getMaxHealth();
+
+				int percenthealth = (int) ((100 / maxhealth) * currenthealth);
+
 				String follower_string = follower.getName().getString();
 				if (ConfigHandler.showFollowerHealth) {
-					LivingEntity le = (LivingEntity) follower;
-					float currenthealth = le.getHealth();
-					float maxhealth = le.getMaxHealth();
-
-					int percenthealth = (int) ((100 / maxhealth) * currenthealth);
 					if (percenthealth <= 0) {
 						toremove.add(follower);
 						continue;
@@ -94,6 +108,13 @@ public class GUIEvent {
 
 					String healthformat = ConfigHandler.followerHealthFormat;
 					follower_string = follower_string + healthformat.replaceAll("<health>", percenthealth + "");
+				}
+
+				if (ConfigHandler.showWolfArmour) {
+					int armourPercentage = Util.getBodyArmourDurabilityPercentage(te);
+					if (armourPercentage >= 0) {
+						follower_string = follower_string + ConfigHandler.wolfArmourFormat.replaceAll("<armour>", armourPercentage + "");
+					}
 				}
 
 				if (ConfigHandler.showFollowerDistance) {
@@ -105,6 +126,11 @@ public class GUIEvent {
 					follower_string = follower_string + distanceformat.replaceAll("<distance>", String.format("%.2f", distance));
 				}
 
+				int followerColour = colour.getRGB();
+				if (ConfigHandler.colourFollowerByHealth) {
+					followerColour = Util.getHealthColour(percenthealth, followerColour);
+				}
+
 				int follower_stringWidth = font.width(follower_string);
 
 				if (ConfigHandler.followerListPositionIsCenter) {
@@ -114,21 +140,21 @@ public class GUIEvent {
 				}
 
 				if (!drawnfirst) {
-					drawText(font, guiGraphics, displaystring, xcoord, heightoffset, colour.getRGB(), ConfigHandler.drawTextShadow);
+					drawText(font, guiGraphics, displaystring, xcoord + widthoffset, heightoffset, colour.getRGB(), ConfigHandler.drawTextShadow);
 					drawnfirst = true;
 				}
 
 				heightoffset += 10;
-				drawText(font, guiGraphics, follower_string, xcoord + xoffset, heightoffset, colour.getRGB(), ConfigHandler.drawTextShadow);
+				drawText(font, guiGraphics, follower_string, xcoord + xoffset + widthoffset, heightoffset, followerColour, ConfigHandler.drawTextShadow);
 			}
-			
+
 			if (toremove.size() > 0) {
 				for (Entity etr : toremove) {
 					Variables.activefollowers.remove(etr);
 				}
 			}
 		}
-		
+
 		matrixStack.popMatrix();
 	}
 

@@ -1,9 +1,11 @@
 package com.serilum.guifollowers.forge.events;
 
+import com.serilum.guifollowers.cmds.ClientCommandGUIFollowers;
 import com.serilum.guifollowers.data.Variables;
 import com.serilum.guifollowers.events.FollowerEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 import net.minecraftforge.event.TickEvent.ClientTickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedOutEvent;
 import net.minecraftforge.eventbus.api.bus.BusGroup;
@@ -25,6 +27,11 @@ public class ForgeFollowerEvent {
 	public static void onPlayerLogout(PlayerLoggedOutEvent e) {
 		Player player = e.getEntity();
 		FollowerEvent.onPlayerLogout(player.level(), player);
+	}
+
+	@SubscribeEvent
+	public static void registerCommands(RegisterClientCommandsEvent e) {
+		ClientCommandGUIFollowers.register(e.getDispatcher());
 	}
 
 	@SubscribeEvent

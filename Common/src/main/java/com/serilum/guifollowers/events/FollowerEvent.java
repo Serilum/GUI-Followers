@@ -2,6 +2,7 @@ package com.serilum.guifollowers.events;
 
 import com.serilum.guifollowers.config.ConfigHandler;
 import com.serilum.guifollowers.data.Variables;
+import com.serilum.guifollowers.util.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.TamableAnimal;
@@ -49,7 +50,18 @@ public class FollowerEvent {
 				continue;
 			}
 			
+			if (Util.isIgnoredEntityType(tamableAnimal)) {
+				continue;
+			}
+
 			if (tamableAnimal.isInSittingPose()) {
+				if (Util.isHidden(tamableAnimal)) {
+					Util.showFollower(tamableAnimal);
+				}
+				continue;
+			}
+
+			if (Util.isHidden(tamableAnimal)) {
 				continue;
 			}
 
