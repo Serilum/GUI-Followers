@@ -4,8 +4,10 @@ import com.natamus.collective.check.ShouldLoadCheck;
 import com.natamus.collective.fabric.callbacks.CollectivePlayerEvents;
 import com.serilum.guifollowers.data.Variables;
 import com.serilum.guifollowers.events.FollowerEvent;
+import com.serilum.guifollowers.fabric.cmds.FabricClientCommandGUIFollowers;
 import com.serilum.guifollowers.util.Reference;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
@@ -35,6 +37,10 @@ public class ModFabricClient implements ClientModInitializer {
 		
 		CollectivePlayerEvents.PLAYER_LOGGED_OUT.register((Level world, Player player) -> {
 			FollowerEvent.onPlayerLogout(world, player);
+		});
+
+		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+			FabricClientCommandGUIFollowers.register(dispatcher);
 		});
 	}
 }

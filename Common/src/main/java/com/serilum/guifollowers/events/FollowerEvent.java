@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.serilum.guifollowers.config.ConfigHandler;
 import com.serilum.guifollowers.data.Variables;
+import com.serilum.guifollowers.util.Util;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
@@ -51,7 +52,18 @@ public class FollowerEvent {
 				continue;
 			}
 			
+			if (Util.isIgnoredEntityType(te)) {
+				continue;
+			}
+
 			if (te.isInSittingPose()) {
+				if (Util.isHidden(te)) {
+					Util.showFollower(te);
+				}
+				continue;
+			}
+
+			if (Util.isHidden(te)) {
 				continue;
 			}
 

@@ -1,10 +1,12 @@
 package com.serilum.guifollowers.neoforge.events;
 
+import com.serilum.guifollowers.cmds.ClientCommandGUIFollowers;
 import com.serilum.guifollowers.data.Variables;
 import com.serilum.guifollowers.events.FollowerEvent;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedOutEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 
@@ -19,6 +21,11 @@ public class NeoForgeFollowerEvent {
 	public static void onPlayerLogout(PlayerLoggedOutEvent e) {
 		Player player = e.getEntity();
 		FollowerEvent.onPlayerLogout(player.level(), player);
+	}
+
+	@SubscribeEvent
+	public static void registerCommands(RegisterClientCommandsEvent e) {
+		ClientCommandGUIFollowers.register(e.getDispatcher());
 	}
 
 	@SubscribeEvent
