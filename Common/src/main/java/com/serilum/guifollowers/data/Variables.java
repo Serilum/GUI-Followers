@@ -6,10 +6,12 @@ import net.minecraft.world.entity.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Variables {
 	public static final Minecraft mc = Minecraft.getInstance();
 	public static KeyMapping clearlist_hotkey;
 
 	public static List<Entity> activefollowers = new ArrayList<Entity>();
+	public static List<UUID> hiddenFollowers = new ArrayList<>();
 }
