@@ -2,6 +2,7 @@ package com.serilum.guifollowers.events;
 
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.natamus.collective.functions.ColourFunctions;
 import com.natamus.collective.functions.GUIFunctions;
 import com.serilum.guifollowers.config.ConfigHandler;
 import com.serilum.guifollowers.data.Variables;
@@ -49,15 +50,15 @@ public class GUIEvent {
 
 			int stringWidth = font.width(displaystring);
 
-			Color colour = new Color(ConfigHandler.RGB_R, ConfigHandler.RGB_G, ConfigHandler.RGB_B, 255);
+			Color colour = new Color(ColourFunctions.getRgbColour(ConfigHandler.RGB));
 
 			int xcoord;
 			int xoffset = 5;
 			int widthoffset = (int)(ConfigHandler.followerListWidthOffset / textScale);
-			if (ConfigHandler.followerListPositionIsLeft) {
+			if (ConfigHandler.followerListPosition.equals("Left")) {
 				xcoord = 5;
 			}
-			else if (ConfigHandler.followerListPositionIsCenter) {
+			else if (ConfigHandler.followerListPosition.equals("Center")) {
 				xcoord = (width/2) - (stringWidth/2);
 			}
 			else {
@@ -133,9 +134,10 @@ public class GUIEvent {
 
 				int follower_stringWidth = font.width(follower_string);
 
-				if (ConfigHandler.followerListPositionIsCenter) {
+				if (ConfigHandler.followerListPosition.equals("Center")) {
 					xcoord = (width / 2) - (follower_stringWidth / 2) - xoffset;
-				} else if (!ConfigHandler.followerListPositionIsLeft) {
+				}
+				else if (!ConfigHandler.followerListPosition.equals("Left")) {
 					xcoord = width - follower_stringWidth - 5 - xoffset;
 				}
 
