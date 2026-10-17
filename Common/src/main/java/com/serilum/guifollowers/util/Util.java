@@ -1,5 +1,6 @@
 package com.serilum.guifollowers.util;
 
+import com.natamus.collective.functions.ConfigFunctions;
 import com.natamus.collective.functions.DataFunctions;
 import com.serilum.guifollowers.config.ConfigHandler;
 import com.serilum.guifollowers.data.Variables;
@@ -81,15 +82,7 @@ public class Util {
 
 	public static boolean isIgnoredEntityType(Entity entity) {
 		String entityTypeId = EntityType.getKey(entity.getType()).toString();
-		String entityTypeNamespace = entityTypeId.split(":")[0];
-
-		for (String rawEntityType : ConfigHandler.entityTypesToIgnore.split(",")) {
-			String ignoredEntityType = rawEntityType.strip();
-			if (ignoredEntityType.equals(entityTypeId) || ignoredEntityType.equals(entityTypeNamespace + ":*")) {
-				return true;
-			}
-		}
-		return false;
+		return ConfigFunctions.isInIdList(ConfigHandler.entityTypesToIgnore, entityTypeId);
 	}
 
 	public static int getHealthColour(int percentHealth, int defaultColour) {

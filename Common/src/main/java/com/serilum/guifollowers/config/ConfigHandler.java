@@ -18,19 +18,15 @@ public class ConfigHandler extends DuskConfig {
 	@Entry public static String followerDistanceFormat = " (<distance> blocks)";
 	@Entry(min = -1, max = 300) public static int distanceToCheckForFollowersAround = 50;
 	@Entry(min = 0, max = 3600) public static int timeBetweenChecksInSeconds = 2;
-	@Entry public static String entityTypesToIgnore = "workers:*";
-	@Entry public static boolean followerListPositionIsLeft = true;
-	@Entry public static boolean followerListPositionIsCenter = false;
-	@Entry public static boolean followerListPositionIsRight = false;
+	@Entry(registry = "entity_type", filter = "animals") public static String entityTypesToIgnore = "workers:*";
+	@Entry(options = {"Left", "Center", "Right"}) public static String followerListPosition = "Left";
 	@Entry(min = 0, max = 3000) public static int followerListHeightOffset = 20;
 	@Entry(min = -3000, max = 3000) public static int followerListWidthOffset = 0;
 	@Entry(min = 0.5, max = 3.0) public static double followerListTextScale = 1.0;
 	@Entry public static boolean drawTextShadow = true;
 	@Entry public static boolean colourFollowerByHealth = false;
 	@Entry public static String followerHealthColours = "75:255,255,85;50:255,170,0;25:255,85,85";
-	@Entry(min = 0, max = 255) public static int RGB_R = 255;
-	@Entry(min = 0, max = 255) public static int RGB_G = 255;
-	@Entry(min = 0, max = 255) public static int RGB_B = 255;
+	@Entry(rgb = true) public static String RGB = "255,255,255";
 
 	public static void initConfig() {
 		configMetaData.put("showFollowerList", Arrays.asList(
@@ -60,14 +56,8 @@ public class ConfigHandler extends DuskConfig {
 		configMetaData.put("entityTypesToIgnore", Arrays.asList(
 			"A comma-separated list of entity ids that are never shown in the follower list. Use '<modid>:*' to ignore every entity of a mod. By default contains the workers from the Villager Workers mod, which always follow."
 		));
-		configMetaData.put("followerListPositionIsLeft", Arrays.asList(
-			"Places the follower list on the left."
-		));
-		configMetaData.put("followerListPositionIsCenter", Arrays.asList(
-			"Places the follower list in the middle."
-		));
-		configMetaData.put("followerListPositionIsRight", Arrays.asList(
-			"Places the follower list on the right."
+		configMetaData.put("followerListPosition", Arrays.asList(
+			"Where the follower list is shown at the top of the screen."
 		));
 		configMetaData.put("followerListHeightOffset", Arrays.asList(
 			"The vertical offset (y coord) for the follower list. This determines how far down the list should be on the screen. Can be changed to prevent GUIs from overlapping."
@@ -87,14 +77,8 @@ public class ConfigHandler extends DuskConfig {
 		configMetaData.put("followerHealthColours", Arrays.asList(
 			"A list of <health percentage>:<R>,<G>,<B> entries separated by a semicolon, with RGB values from 0 to 255. A follower at or below that health percentage is shown in that colour. Used when colourFollowerByHealth is enabled."
 		));
-		configMetaData.put("RGB_R", Arrays.asList(
-			"The red RGB value for the clock text."
-		));
-		configMetaData.put("RGB_G", Arrays.asList(
-			"The green RGB value for the clock text."
-		));
-		configMetaData.put("RGB_B", Arrays.asList(
-			"The blue RGB value for the clock text."
+		configMetaData.put("RGB", Arrays.asList(
+			"The colour of the follower list text, as red, green and blue values from 0 to 255."
 		));
 
 		DuskConfig.init(Reference.NAME, Reference.MOD_ID, ConfigHandler.class);
